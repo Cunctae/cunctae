@@ -1,0 +1,44 @@
+---
+import ImageCard from "@components/ImageCard.astro";
+import Letters from "@components/Letters.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { LOCALES, useTranslations, type Lang } from "src/i18n";
+const t = useTranslations(Astro.currentLocale as Lang);
+
+const locale = Astro.currentLocale as Lang;
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<BaseLayout>
+  <img id="background-image" alt="background" />
+  <section>
+    <ImageCard />
+    <ImageCard />
+    <ImageCard />
+
+
+  </section>
+</BaseLayout>
+
+<script src="../../../src/scripts/backgroundImage.ts"></script>
+
+<style>
+  img {
+    width: 100vw;
+
+    height: 400px;
+    object-fit: cover;
+    filter: sepia(1);
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    grid-template: max-content;
+  }
+</style>

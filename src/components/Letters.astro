@@ -10,34 +10,82 @@ const { alt } = Astro.props;
 <section class="letters">
     {
         letters.map((img) => (
-            <img src={img.src} alt={alt} id={img.id} draggable="false"/>
+            <img src={img.src} alt={`Letter ${img.id} of ${alt}`} id={img.id} draggable="false"/>
         ))
     }
 </section>
 
 <style>
     .letters {
-        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1rem;
         cursor: pointer;
+        max-width: 300px;
+        gap: 0.5rem;
+    }
+    .letters img {
+        max-height: 3rem;
     }
 
-    .letters img {
-        height: 6.25rem;
+    .letters:hover {
+        animation-play-state: running;
+        animation-composition: accumulate;
+        animation-timing-function: ease-in-out;
+    }
+
+    @media (width <= 1200px) {
+        .letters {
+            max-width: 300px;
+        }
+        .letters img {
+            max-height: 3rem;
+        }
+    }
+
+    @media (width <= 900px) {
+        .letters {
+            max-width: 250px;
+        }
+        .letters img {
+            max-height: 2.5rem;
+        }
     }
 
     @media (width <= 600px) {
+        .letters {
+            max-width: 180px;
+            gap: 0.3rem;
+        }
         .letters img {
-            height: 2.5rem;
+            height: 2rem;
+        }
+    }
+
+    @media (width <= 400px) {
+        .letters {
+            max-width: 140px;
+            gap: 0.2rem;
+        }
+        .letters img {
+            height: 1.5rem;
         }
     }
 
     .letters #c {
         width: 8.125rem;
-        animation: float-up 5s infinite;
+    }
+
+    @media (width <= 1200px) {
+        .letters #c {
+            width: 7rem;
+        }
+    }
+
+    @media (width <= 900px) {
+        .letters #c {
+            width: 5.5rem;
+        }
     }
 
     @media (width <= 600px) {
@@ -46,23 +94,35 @@ const { alt } = Astro.props;
         }
     }
 
-    .letters #u {
-        animation: float-down 5s infinite;
+    @media (width <= 400px) {
+        .letters #c {
+            width: 3.2rem;
+        }
     }
-    .letters #n {
-        animation: float-up 5s infinite;
+
+    .letters:hover #u,
+    .letters:hover #c1,
+    .letters:hover #a {
+        animation: float-down 2.5s infinite;
+        animation-play-state: running;
     }
-    .letters #c1 {
-        animation: float-down 5s infinite;
+
+    .letters:hover #c,
+    .letters:hover #n,
+    .letters:hover #t,
+    .letters:hover #e {
+        animation: float-up 2.5s infinite;
+        animation-play-state: running;
     }
-    .letters #t {
-        animation: float-up 5s infinite;
+
+    #u, #c1, #a {
+        animation: float-down 2.5s infinite;
+        animation-play-state: paused;
     }
-    .letters #a {
-        animation: float-down 5s infinite;
-    }
-    .letters #e {
-        animation: float-up 5s infinite;
+
+    #c, #n, #t, #e {
+        animation: float-up 2.5s infinite;
+        animation-play-state: paused;
     }
 
     @keyframes float-up {

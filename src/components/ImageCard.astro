@@ -1,0 +1,74 @@
+---
+let image =
+  "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
+---
+<div class="image-card">
+  <figure>
+    <img class="image" src={image} alt="Channel Creation" />
+  </figure>
+  <div class="image-card-overlay">
+    <div class="image-card-text">
+      <h2>
+        <a href="/bricks-disorder"><span>CHANNEL CREATION</span></a>
+      </h2>
+    </div>
+  </div>
+</div>
+
+<style>
+  .image-card {
+    position: relative;
+
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .image-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .image-card-text {
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+
+  .image-card-text h2 {
+    margin: 0;
+  }
+
+  .image-card-text a {
+    color: var(--White);
+    text-decoration: none;
+    font-size: var(--H2);
+  }
+
+  .image-card:hover .image {
+    transform: scale(1.1);
+  }
+
+  .image-card:hover .image-card-overlay {
+    opacity: 1;
+  }
+
+  .image-card:hover .image-card-text {
+    transform: translateY(0);
+  }
+</style>

@@ -1,5 +1,7 @@
 {
     "extends": "astro/tsconfigs/strict",
+    "exclude": ["dist"],
+    "include": [".astro/types.d.ts", "**/*"],
     "compilerOptions": {
         "strictPropertyInitialization": false,
         "baseUrl": ".",
@@ -21,6 +23,9 @@
             ],
             "@scripts/*": [
                 "src/scripts/*"
+            ],
+            "@styles/*": [
+                "src/styles/*"
             ]
         }
     },

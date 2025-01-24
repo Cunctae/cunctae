@@ -1,0 +1,128 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { LOCALES } from "src/i18n";
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+---
+
+<BaseLayout title="Page not found" isLandingPage>
+    <div class="page-no-found">
+
+        <div id="text" data-text="404" draggable="false">404</div>
+        <div class="container">
+            <h1 class="not-found">Page not found...</h1>
+        </div>
+        <a href="/">Back to homepage</a>
+    </div>
+</BaseLayout>
+
+<style>
+
+    .page-no-found {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        gap: 2rem;
+        height: 100vh;
+        background-image: url("/monk.jpg");
+        mix-blend-mode: multiply;
+        filter: sepia(50%);
+
+    }
+
+    .container {
+        display: inline-block;
+    }
+
+    .not-found {
+        font-family: system-ui;
+        font-size: clamp(1rem, 10vw, 4rem);
+        font-weight: 800;
+        text-align: center;
+        text-wrap: wrap;
+        border-right: 0.5rem solid;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        color: white;
+        line-height: normal;
+        animation:
+            typing 2s steps(16),
+            cursor 0.8s step-end infinite alternate;
+        cursor: none;
+    }
+
+    #text {
+        font-family: system-ui;
+        position: relative;
+        font-size: clamp(6rem, 10vw, 12rem);
+        font-weight: 800;
+        text-align: center;
+        transform: rotate(-28deg) skew(16deg);
+        color: var(--russian-violet);
+        animation: arround 15s infinite;
+        cursor: help;
+    }
+
+    #text:before {
+        content: attr(data-text);
+        position: absolute;
+        top: 1.875rem;
+        left: -1.875rem;
+        color: rgba(0, 0, 0, 0.3);
+        text-shadow: none;
+        filter: blur(8px);
+        z-index: -1;
+    }
+
+    @keyframes arround {
+        0% {
+            transform: rotate(-28deg) skew(16deg);
+        }
+
+        50% {
+            transform: rotate(0deg) skew(0deg);
+        }
+
+        100% {
+            transform: rotate(-28deg) skew(16deg);
+        }
+    }
+
+    @keyframes cursor {
+        50% {
+            border-color: transparent;
+        }
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+    }
+</style>
+
+<script>
+    var text = document.getElementById("text");
+    let shadow: string = "";
+
+    if (text !== null) {
+        for (var i = 0; i < 8; i++) {
+            shadow +=
+                (shadow ? "," : "") +
+                -i * 1 +
+                "px " +
+                i * 1 +
+                "px 0 var(--carmine)";
+        }
+
+        text.style.textShadow = shadow;
+    } else {
+        console.error("Element with ID 'text' not found.");
+    }
+</script>

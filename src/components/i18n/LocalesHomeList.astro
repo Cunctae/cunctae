@@ -1,0 +1,19 @@
+---
+// Returns a link to the top page of each locale
+
+import { LOCALES } from "src/i18n";
+---
+
+{
+  Object.entries(LOCALES).map(([lang, { flag }]) => (
+    <li>
+      <a
+        href={`/${lang}/`}
+        onclick={`localStorage.selectedLang = "${lang}"`}
+        dir={LOCALES[lang].dir || null}
+      >
+        {flag}
+      </a>
+    </li>
+  ))
+}

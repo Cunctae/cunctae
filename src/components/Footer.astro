@@ -1,0 +1,49 @@
+---
+// Footer UI displayed on each page.
+import LocalesHomeList from "@components/i18n/LocalesHomeList.astro";
+---
+
+<footer >
+
+
+  <ul>
+    <LocalesHomeList />
+  </ul>
+
+  <a>
+    © Cunctae {new Date().getFullYear()}.
+  </a>
+</footer>
+
+<style>
+  footer {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-block: 1rem 2rem;
+    background-color: var(--Primary-600);
+    color: var(--Primary-50);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    
+    a {
+      display: block;
+      padding-inline: 0.5em;
+      background: color-mix(in srgb, var(--White) 30%, transparent);
+      border-radius: 0.5em;
+    }
+
+  }
+
+  .copy {
+    display: block;
+    opacity: 0.8;
+    letter-spacing: 0.05em;
+  }
+</style>
