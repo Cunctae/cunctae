@@ -1,0 +1,103 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import { LOCALES, useTranslations, type Lang } from "src/i18n";
+
+export const getStaticPaths = () =>
+  Object.keys(LOCALES).map((lang) => ({
+    params: { lang },
+  }));
+
+const t = useTranslations(Astro.currentLocale as Lang);
+---
+
+<BaseLayout>
+  <section class="about-section">
+    <h1>
+      {
+        t({
+          en: "Want to collab? be part of the team? both?",
+          es: "¿Quieres colaborar? ¿ser parte del equipo? ¿ambos?",
+          "pt-br": "Quer colaborar? fazer parte da equipe? ambos?",
+        })
+      }
+    </h1>
+    <abbr
+      title={t({
+        en: "Click here to send an email",
+        es: "Haz clic aquí para enviar un correo electrónico",
+        "pt-br": "Clique aqui para enviar um email",
+      })}
+    >
+      <a href="mailto:cunctae@gmail.com"> cunctae@gmail.com </a>
+    </abbr>
+
+    <article>
+      <p>
+        Cunctae stands for <i>"everything"</i>
+        and comes from Latin. Here we think this space as an open lab, we create,
+        no matter what. This project has been on a strange journey, from academical
+        paper creation, passing from brands creation and also software development,
+        and other sideway hobbies Get in touch to be part of that journey.
+      </p>
+    </article>
+
+    <Image
+      class="about-section-image"
+      alt="About section."
+      src="https://dummyimage.com/500x500/000/fff.png"
+      width={500}
+      height={500}
+      loading="lazy"
+    />
+  </section>
+</BaseLayout>
+
+<style>
+  .about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  img.about-section-image {
+    border-radius: 0.5rem;
+  }
+
+  a {
+    color: red;
+    transition: 0.2s;
+    font-size: var(--H3);
+  }
+
+  a:hover {
+    font-size: var(--H1);
+    font-weight: bold;
+    text-shadow:
+      1px 1px 2px var(--Black),
+      0 0 1em var(--White),
+      0 0 0.2em var(--Black);
+  }
+
+  a:active {
+    text-shadow:
+      1px 1px 2px var(--White),
+      0 0 1em var(--Black),
+      0 0 0.2em var(--White);
+  }
+
+  p {
+    font-size: var(--Body-18);
+  }
+
+  article {
+    max-width: 768px;
+  }
+
+  abbr {
+    all: unset;
+  }
+</style>

@@ -1,15 +1,30 @@
 ---
-let image =
-  "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg";
+import { Image } from "astro:assets";
+
+interface Props {
+  image: string;
+  text: string;
+}
+
+const { text, image } = Astro.props;
 ---
+
 <div class="image-card">
-  <figure>
-    <img class="image" src={image} alt="Channel Creation" />
-  </figure>
+  <Image
+    class="about-section-image"
+    alt="About section main image."
+    src={image}
+    height={800}
+    width={2048}
+    decoding="async"
+    loading="lazy"
+    inferSize
+  />
+
   <div class="image-card-overlay">
     <div class="image-card-text">
       <h2>
-        <a href="/bricks-disorder"><span>CHANNEL CREATION</span></a>
+        <a href="/"><span>{text}</span></a>
       </h2>
     </div>
   </div>

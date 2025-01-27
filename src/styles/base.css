@@ -1,12 +1,7 @@
 /* basic page style */
 
-:lang(ar) {
-  * {
-    letter-spacing: 0 !important;
-  }
-}
-
 :root {
+  font-family: Bricolage Grotesque;
   @media (prefers-color-scheme: light) {
     --Primary-50: #fff5f5;
     --Primary-300: #ff6b6b;
@@ -73,6 +68,22 @@
   background-size: 16px 16px;
 
   line-height: 1.6;
+}
+
+h1 {
+  font-size: var(--H1);
+}
+
+h2 {
+  font-size: var(--H2);
+}
+
+h3 {
+  font-size: var(--H3);
+}
+
+p {
+  font-size: var(--Body-18);
 }
 
 h1,

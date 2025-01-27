@@ -29,9 +29,6 @@ export const getStaticPaths = () =>
         overflow: hidden;
         gap: 2rem;
         height: 100vh;
-        background-image: url("/monk.jpg");
-        mix-blend-mode: multiply;
-        filter: sepia(50%);
 
     }
 
@@ -49,7 +46,7 @@ export const getStaticPaths = () =>
         width: 100%;
         white-space: nowrap;
         overflow: hidden;
-        color: white;
+        color: var(--Black);
         line-height: normal;
         animation:
             typing 2s steps(16),
@@ -64,7 +61,7 @@ export const getStaticPaths = () =>
         font-weight: 800;
         text-align: center;
         transform: rotate(-28deg) skew(16deg);
-        color: var(--russian-violet);
+        color: var(--Primary-600);
         animation: arround 15s infinite;
         cursor: help;
     }
@@ -74,7 +71,7 @@ export const getStaticPaths = () =>
         position: absolute;
         top: 1.875rem;
         left: -1.875rem;
-        color: rgba(0, 0, 0, 0.3);
+        color: var(--Neutral-600);
         text-shadow: none;
         filter: blur(8px);
         z-index: -1;

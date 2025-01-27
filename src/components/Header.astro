@@ -14,7 +14,7 @@ const isActive = (path: string) =>
 ---
 
 <header>
-  <a href={getRelativeLocaleUrl(locale, "/")} class="brand-container" onclick="event.preventDefault();">
+  <a href={getRelativeLocaleUrl(locale, "/")} class="brand-container">
     <Letters alt="Cunctae" />
   </a>
 
@@ -26,24 +26,36 @@ const isActive = (path: string) =>
 
   <nav class="nav-menu">
     <ul>
-      <li><a href={getRelativeLocaleUrl(locale, "/")}>Home</a></li>
-      <li><a href={getRelativeLocaleUrl(locale, "/about")}>About</a></li>
-      <li><a href={getRelativeLocaleUrl(locale, "/portfolio")}>Portfolio</a></li>
-      <li><a href={getRelativeLocaleUrl(locale, "/contact")}>Contact</a></li>
-    <LocaleSelect />
+      <li>
+        <a
+          href={getRelativeLocaleUrl(locale, "/about")}
+          class={isActive("/about") ? "active" : null}
+        >
+          {
+            t({
+              es: "Acerca",
+              en: "About",
+              "pt-br": "Sobre",
+            })
+          }
+        </a>
+      </li>
+
+   
+      <LocaleSelect />
     </ul>
   </nav>
 </header>
 
 <script>
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('.nav-menu');
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
 
-  hamburger?.addEventListener('click', () => {
-    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
-    hamburger.classList.toggle('active');
-    navMenu?.classList.toggle('active');
+  hamburger?.addEventListener("click", () => {
+    const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
+    hamburger.setAttribute("aria-expanded", (!isExpanded).toString());
+    hamburger.classList.toggle("active");
+    navMenu?.classList.toggle("active");
   });
 </script>
 
@@ -106,12 +118,16 @@ const isActive = (path: string) =>
 
   .nav-menu a {
     text-decoration: none;
-    color: inherit;
+    font-size: var(--Body-18);
     font-weight: 500;
     transition: color 0.3s ease;
   }
 
   .nav-menu a:hover {
+    color: var(--Primary-600);
+  }
+
+  .nav-menu a.active {
     color: var(--Primary-600);
   }
 
@@ -138,7 +154,6 @@ const isActive = (path: string) =>
     .nav-menu ul {
       flex-direction: column;
       align-items: center;
-      font-size: 1.5rem;
     }
   }
 </style>
