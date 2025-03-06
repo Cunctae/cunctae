@@ -1,89 +1,94 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 interface Props {
-  image: string;
-  text: string;
+	image: string;
+	text: string;
 }
 
 const { text, image } = Astro.props;
 ---
 
 <div class="image-card">
-  <Image
-    class="about-section-image"
-    alt="About section main image."
-    src={image}
-    height={800}
-    width={2048}
-    decoding="async"
-    loading="lazy"
-    inferSize
-  />
+	<Image
+		class="about-section-image"
+		alt="About section main image."
+		src={image}
+		height={1000}
+		width={1000}
+		decoding="async"
+		loading="lazy"
+		inferSize
+	/>
 
-  <div class="image-card-overlay">
-    <div class="image-card-text">
-      <h2>
-        <a href="/"><span>{text}</span></a>
-      </h2>
-    </div>
-  </div>
+	<div class="image-card-overlay">
+		<div class="image-card-text">
+			<h2>
+				<a href="/"><span>{text}</span></a>
+			</h2>
+		</div>
+	</div>
 </div>
 
 <style>
-  .image-card {
-    position: relative;
+	.image-card {
+		position: relative;
+		overflow: hidden;
+		cursor: pointer;
+	}
 
-    overflow: hidden;
-    cursor: pointer;
-  }
+	.iamge-card img {
+		width: 500px;
+		height: 500px;
+	}
 
-  .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
+	.image {
+		width: 500px;
+		height: 500px;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
 
-  .image-card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+	.image-card-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.7);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
 
-  .image-card-text {
-    text-align: center;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-  }
+	.image-card-text {
+		text-align: center;
+		transform: translateY(20px);
+		transition: transform 0.3s ease;
+		font-weight: bolder;
+	}
 
-  .image-card-text h2 {
-    margin: 0;
-  }
+	.image-card-text h2 {
+		margin: 0;
+	}
 
-  .image-card-text a {
-    color: var(--White);
-    text-decoration: none;
-    font-size: var(--H2);
-  }
+	.image-card-text a {
+		color: var(--White);
+		text-decoration: none;
+		font-size: var(--H2);
+	}
 
-  .image-card:hover .image {
-    transform: scale(1.1);
-  }
+	.image-card:hover .image {
+		transform: scale(1.1);
+	}
 
-  .image-card:hover .image-card-overlay {
-    opacity: 1;
-  }
+	.image-card:hover .image-card-overlay {
+		opacity: 1;
+	}
 
-  .image-card:hover .image-card-text {
-    transform: translateY(0);
-  }
+	.image-card:hover .image-card-text {
+		transform: translateY(0);
+	}
 </style>

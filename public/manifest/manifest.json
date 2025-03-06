@@ -1,23 +1,23 @@
 {
-  "lang": "en",
-  "name": "Cunctae",
-  "scope": "/",
-  "display": "standalone",
-  "start_url": "https://cunctae.com/",
-  "short_name": "Cunctae",
-  "theme_color": "#EDD07E",
-  "description": "This is a collective that tries to undertand the meaning of all - cunctae.com",
-  "background_color": "#a30015",
-  "icons": [
-    {
-      "src": "/manifest/icon512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "/manifest/icon192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ]
+	"lang": "en",
+	"name": "Cunctae",
+	"scope": "/",
+	"display": "standalone",
+	"start_url": "https://cunctae.com/",
+	"short_name": "Cunctae",
+	"theme_color": "#EDD07E",
+	"description": "This is a collective that tries to undertand the meaning of all - cunctae.com",
+	"background_color": "#a30015",
+	"icons": [
+		{
+			"src": "/manifest/icon512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		},
+		{
+			"src": "/manifest/icon192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		}
+	]
 }

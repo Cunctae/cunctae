@@ -22,7 +22,7 @@ Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum s
 
 Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra. Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl pretium fusce.
 
-![Personalized coing bag made with a baseball sleave.](/sewing/sewing-2.jpg "This is an image")
+![Personalized coing bag made with a baseball sleave.](/sewing/sewing-2.jpg 'This is an image')
 
 ### Level-three heading
 
@@ -30,8 +30,7 @@ Sed pulvinar porttitor mi in ultricies. Etiam non dolor gravida eros pulvinar pe
 
 Aenean pretium purus augue, ut bibendum erat convallis quis. Cras condimentum quis velit ac mollis. Suspendisse non purus fringilla, venenatis nisl porta, finibus odio. Curabitur aliquet metus faucibus libero interdum euismod. Morbi sed magna nisl. Morbi odio nibh, facilisis vel sapien eu, tempus tincidunt erat. Nullam erat velit, sagittis at purus quis, tristique scelerisque tortor. Pellentesque lacinia tortor id est aliquam viverra. Vestibulum et diam ac ipsum mollis fringilla.
 
-![Personalized coing bag made with a baseball sleave with coins.](/sewing/sewing-3.jpg "a title")
-
+![Personalized coing bag made with a baseball sleave with coins.](/sewing/sewing-3.jpg 'a title')
 
 #### Level-four heading
 

@@ -1,103 +1,107 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
-import { LOCALES, useTranslations, type Lang } from "src/i18n";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { LOCALES, useTranslations, type Lang } from 'src/i18n';
 
 export const getStaticPaths = () =>
-  Object.keys(LOCALES).map((lang) => ({
-    params: { lang },
-  }));
+	Object.keys(LOCALES).map((lang) => ({
+		params: { lang },
+	}));
 
 const t = useTranslations(Astro.currentLocale as Lang);
 ---
 
 <BaseLayout>
-  <section class="about-section">
-    <h1>
-      {
-        t({
-          en: "Want to collab? be part of the team? both?",
-          es: "¿Quieres colaborar? ¿ser parte del equipo? ¿ambos?",
-          "pt-br": "Quer colaborar? fazer parte da equipe? ambos?",
-        })
-      }
-    </h1>
-    <abbr
-      title={t({
-        en: "Click here to send an email",
-        es: "Haz clic aquí para enviar un correo electrónico",
-        "pt-br": "Clique aqui para enviar um email",
-      })}
-    >
-      <a href="mailto:cunctae@gmail.com"> cunctae@gmail.com </a>
-    </abbr>
+	<section class="about-section">
+		<h1>
+			{
+				t({
+					en: 'Want to collab? be part of the team? both? Just text us!',
+					es: '¿Quieres colaborar? ¿ser parte del equipo? ¿ambos?, ¡Escribenos!',
+					'pt-br': 'Quer colaborar? fazer parte da equipe? ambos?, Escreve nos!',
+				})
+			}
+		</h1>
+		<abbr
+			title={t({
+				en: 'Click here to send an email',
+				es: 'Haz clic aquí para enviar un correo electrónico',
+				'pt-br': 'Clique aqui para enviar um email',
+			})}
+		>
+			<a href="mailto:cunctae@gmail.com"> cunctae@gmail.com </a>
+		</abbr>
 
-    <article>
-      <p>
-        Cunctae stands for <i>"everything"</i>
-        and comes from Latin. Here we think this space as an open lab, we create,
-        no matter what. This project has been on a strange journey, from academical
-        paper creation, passing from brands creation and also software development,
-        and other sideway hobbies Get in touch to be part of that journey.
-      </p>
-    </article>
+		<article>
+			<p>
+				{
+					t({
+						en: 'Cunctae stands for "everything" and comes from Latin. Here we think this space as an open lab, we create, no matter what. This project has been on a strange journey, from academical paper creation, passing from brands creation and also software development, and other sideway hobbies Get in touch to be part of that journey.',
+						es: 'Cunctae significa "todo" y proviene del latín. Aquí pensamos en este espacio como un laboratorio abierto, creamos, no importa lo que pase. Este proyecto ha recorrido un camino extraño, desde la creación de artículos académicos, pasando por la creación de marcas y también el desarrollo de software, y otros hobbies secundarios. Ponte en contacto para ser parte de ese viaje.',
+						'pt-br': 'Cunctae significa "tudo" e vem do latim. Aqui pensamos este espaço como um laboratório aberto, criamos, aconteça o que acontecer. Este projeto tem feito uma viagem estranha, desde a criação de trabalhos académicos, passando pela criação de marcas e também desenvolvimento de software, e outros passatempos paralelos.',
+					})
+				}
+			</p>
+		</article>
 
-    <Image
-      class="about-section-image"
-      alt="About section."
-      src="https://dummyimage.com/500x500/000/fff.png"
-      width={500}
-      height={500}
-      loading="lazy"
-    />
-  </section>
+
+	</section>
 </BaseLayout>
 
 <style>
-  .about-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    gap: 1rem;
-  }
+	.about-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		gap: 1rem;
+		padding-top: 80px;
+		background-color: var(--Neutral-50);
+		min-height: 100vh;
+	}
 
-  img.about-section-image {
-    border-radius: 0.5rem;
-  }
+	h1 {
+		text-align: center;
+		color: var(--Neutral-600);
+		line-height: normal;
+	}
 
-  a {
-    color: red;
-    transition: 0.2s;
-    font-size: var(--H3);
-  }
+	img.about-section-image {
+		border-radius: 0.5rem;
+	}
 
-  a:hover {
-    font-size: var(--H1);
-    font-weight: bold;
-    text-shadow:
-      1px 1px 2px var(--Black),
-      0 0 1em var(--White),
-      0 0 0.2em var(--Black);
-  }
+	a {
+		font-size: var(--H3);
+		transition: 0.2s ease-in-out;
+	}
 
-  a:active {
-    text-shadow:
-      1px 1px 2px var(--White),
-      0 0 1em var(--Black),
-      0 0 0.2em var(--White);
-  }
+	a:hover {
+		font-size: var(--H1);
+		font-weight: bold;
+		text-decoration: none;
+		color: var(--Neutral-300);
+		text-shadow:
+			1px 1px 2px var(--Neutral-600),
+			0 0 1em var(--White),
+			0 0 0.2em var(--Neutral-600);
+	}
 
-  p {
-    font-size: var(--Body-18);
-  }
+	a:active {
+		text-shadow:
+		1px 1px 2px var(--Neutral-600),
+			0 0 1em var(--White),
+			0 0 0.2em var(--Neutral-600);
+	}
 
-  article {
-    max-width: 768px;
-  }
+	p {
+		font-size: var(--Body-18);
+	}
 
-  abbr {
-    all: unset;
-  }
+	article {
+		max-width: 768px;
+	}
+
+	abbr {
+		all: unset;
+	}
 </style>
