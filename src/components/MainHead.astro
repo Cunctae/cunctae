@@ -1,69 +1,48 @@
 ---
-import { siteConfig } from "@data/config";
-
+import { siteConfig } from '@data/config';
 
 export interface Props {
-    title?: string;
-    description?: string;
-    keywords?: string[];
-    permalink?: string;
+	title?: string;
+	description?: string;
+	keywords?: string[];
+	permalink?: string;
 }
 
 const {
-    title = siteConfig.title,
-    description = siteConfig.description,
-    keywords = siteConfig.keywords,
+	keywords = siteConfig.keywords,
 } = Astro.props;
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{title}</title>
-<meta name="description" content={description} />
-<meta name="keywords" content={keywords.join(", ")} />
+<meta name="keywords" content={keywords.join(', ')} />
 
 <link rel="manifest" href="/manifest/manifest.json" />
-<link
-    rel="icon"
-    type="image/png"
-    sizes="32x32"
-    href="/manifest/icon32.png"
-/>
-<link
-    rel="icon"
-    type="image/png"
-    sizes="16x16"
-    href="/manifest/icon16.png"
-/>
+<link rel="icon" type="image/png" sizes="32x32" href="/manifest/icon32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/manifest/icon16.png" />
 <link rel="icon" href="/manifest/favicon.ico" type="image/x-icon" />
 
 <link rel="icon" href="/manifest/favicon.ico" type="image/x-icon" />
 <script is:inline>
-    // This code is inlined in the head to make dark mode instant & blocking.
-    const getThemePreference = () => {
-        if (
-            typeof localStorage !== "undefined" &&
-            localStorage.getItem("theme")
-        ) {
-            return localStorage.getItem("theme");
-        }
-        return window.matchMedia("(prefers-color-scheme: dark)").matches
-            ? "dark"
-            : "light";
-    };
-    const isDark = getThemePreference() === "dark";
-    document.documentElement.classList[isDark ? "add" : "remove"]("theme-dark");
+	// This code is inlined in the head to make dark mode instant & blocking.
+	const getThemePreference = () => {
+		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+			return localStorage.getItem('theme');
+		}
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	};
+	const isDark = getThemePreference() === 'dark';
+	document.documentElement.classList[isDark ? 'add' : 'remove']('theme-dark');
 
-    if (typeof localStorage !== "undefined") {
-        // Watch the document element and persist user preference when it changes.
-        const observer = new MutationObserver(() => {
-            const isDark =
-                document.documentElement.classList.contains("theme-dark");
-            localStorage.setItem("theme", isDark ? "dark" : "light");
-        });
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ["class"],
-        });
-    }
+	if (typeof localStorage !== 'undefined') {
+		// Watch the document element and persist user preference when it changes.
+		const observer = new MutationObserver(() => {
+			const isDark = document.documentElement.classList.contains('theme-dark');
+			localStorage.setItem('theme', isDark ? 'dark' : 'light');
+		});
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ['class'],
+		});
+	}
 </script>

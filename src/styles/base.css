@@ -1,89 +1,89 @@
 /* basic page style */
 
 :root {
-  font-family: Bricolage Grotesque;
-  @media (prefers-color-scheme: light) {
-    --Primary-50: #fff5f5;
-    --Primary-300: #ff6b6b;
-    --Primary-600: #fa5252;
-    --Black: #000000;
-    --White: #ffffff;
-    --Error-50: #fff5f5;
-    --Error-300: #ff8787;
-    --Error-600: #ff6b6b;
-    --Info-50: #e7f5ff;
-    --Info-300: #74c0fc;
-    --Info-600: #4dabf7;
-    --Neutral-50: #f8f9fa;
-    --Neutral-300: #dee2e6;
-    --Neutral-600: #868e96;
-    --Warning-50: #fff9db;
-    --Warning-300: #ffd93d;
-    --Warning-600: #fcc419;
-    --Success-50: #ebfbee;
-    --Success-300: #69db7c;
-    --Success-600: #40c057;
-  }
+	font-family: "Times New Roman", Times, serif;
+	@media (prefers-color-scheme: light) {
+		--Primary-50: #fff1f1;
+		--Primary-300: #ff6b6b;
+		--Primary-600: #e03131;
+		--Black: #000000;
+		--White: #ffffff;
+		--Error-50: #fff5f5;
+		--Error-300: #fa5252;
+		--Error-600: #e03131;
+		--Info-50: #e7f5ff;
+		--Info-300: #339af0;
+		--Info-600: #1c7ed6;
+		--Neutral-50: #f8f9fa;
+		--Neutral-300: #adb5bd;
+		--Neutral-600: #495057;
+		--Warning-50: #fff9db;
+		--Warning-300: #ffd43b;
+		--Warning-600: #f08c00;
+		--Success-50: #ebfbee;
+		--Success-300: #40c057;
+		--Success-600: #2b8a3e;
+	}
 
-  @media (prefers-color-scheme: dark) {
-    --Primary-50: #ffdeeb;
-    --Primary-300: #e64980;
-    --Primary-600: #d6336c;
-    --Black: #000000;
-    --White: #ffffff;
-    --Error-50: #ffe3e3;
-    --Error-300: #ff8787;
-    --Error-600: #fa5252;
-    --Info-50: #e3fafc;
-    --Info-300: #66d9e8;
-    --Info-600: #15aabf;
-    --Neutral-50: #f8f9fa;
-    --Neutral-300: #dee2e6;
-    --Neutral-600: #868e96;
-    --Warning-50: #fff3bf;
-    --Warning-300: #ffd43b;
-    --Warning-600: #fab005;
-    --Success-50: #d3f9d8;
-    --Success-300: #69db7c;
-    --Success-600: #40c057;
-  }
+	@media (prefers-color-scheme: dark) {
+		--Primary-50: #2b1216;
+		--Primary-300: #ff6b6b;
+		--Primary-600: #fa5252;
+		--Black: #000000;
+		--White: #ffffff;
+		--Error-50: #2b1111;
+		--Error-300: #ff6b6b;
+		--Error-600: #fa5252;
+		--Info-50: #0b1b35;
+		--Info-300: #4dabf7;
+		--Info-600: #339af0;
+		--Neutral-50: #212529;
+		--Neutral-300: #495057;
+		--Neutral-600: #adb5bd;
+		--Warning-50: #332600;
+		--Warning-300: #ffd43b;
+		--Warning-600: #f08c00;
+		--Success-50: #0b2614;
+		--Success-300: #40c057;
+		--Success-600: #2b8a3e;
+	}
 
-  /* Font sizes */
+	/* Font sizes */
 
-  --H1: 40px;
-  --H2: 32px;
-  --H3: 24px;
-  
-  --Body-18: 18px;
-  --Body-16: 16px;
-  --Body-14: 14px;
-  --Body-12: 12px;
+	--H1: 40px;
+	--H2: 32px;
+	--H3: 24px;
 
-  background-color: var(--Primary-50);
+	--Body-18: 18px;
+	--Body-16: 16px;
+	--Body-14: 14px;
+	--Body-12: 12px;
 
-  background-image: radial-gradient(
-    color-mix(in srgb, var(--Primary-600) 10%, transparent) 1px,
-    var(--Primary-50) 1px
-  );
-  background-size: 16px 16px;
+	background-color: var(--Primary-50);
 
-  line-height: 1.6;
+	background-image: radial-gradient(
+		color-mix(in srgb, var(--Primary-600) 10%, transparent) 1px,
+		var(--Primary-50) 1px
+	);
+	background-size: 16px 16px;
+
+	line-height: 1.6;
 }
 
 h1 {
-  font-size: var(--H1);
+	font-size: var(--H1);
 }
 
 h2 {
-  font-size: var(--H2);
+	font-size: var(--H2);
 }
 
 h3 {
-  font-size: var(--H3);
+	font-size: var(--H3);
 }
 
 p {
-  font-size: var(--Body-18);
+	font-size: var(--Body-18);
 }
 
 h1,
@@ -93,42 +93,44 @@ h4,
 button,
 input,
 label {
-  line-height: 1.4;
+	line-height: 1.4;
 }
 
 p {
-  margin-block-start: 0.8em;
+	margin-block-start: 0.8em;
 }
 
-p a {
-  color: var(--Primary-300);
-  text-decoration: underline;
-}
+
 
 a,
 button {
-  transition: 0.2s ease-out;
-  &:hover,
-  &:active {
-    transition: 0.2s ease-out;
-  }
+	transition: 0.2s ease-out;
+	&:hover,
+	&:active {
+		transition: 0.2s ease-out;
+	}
 }
 
 svg,
 path {
-  fill: currentColor;
-  aspect-ratio: 1;
+	fill: currentColor;
+	aspect-ratio: 1;
 }
 
-[class^="material-icons"] {
-  vertical-align: middle;
-  font-size: 1.1em;
-  line-height: 1;
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  overflow: hidden;
-  &:dir(rtl).dir {
-    scale: -1 1;
-  }
+[class^='material-icons'] {
+	vertical-align: middle;
+	font-size: 1.1em;
+	line-height: 1;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	overflow: hidden;
+	&:dir(rtl).dir {
+		scale: -1 1;
+	}
+}
+
+
+.scroll-lock {
+	overflow: hidden;
 }

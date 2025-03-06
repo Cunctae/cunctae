@@ -7,38 +7,38 @@ import a from '@assets/letters/a.svg';
 import e from '@assets/letters/e.svg';
 
 export interface Letter {
-    id: string;
-    src: string;
-    alt?: string;
+	id: string;
+	src: string;
+	alt?: string;
 }
 
 export const letters: Letter[] = [
-    {
-        id: "c",
-        src: c.src,
-    },
-    {
-        id: "u",
-        src: u.src,
-    },
-    {
-        id: "n",
-        src: n.src,
-    },
-    {
-        id: "c1",
-        src: c1.src,
-    },
-    {
-        id: "t",
-        src: t.src,
-    },
-    {
-        id: "a",
-        src: a.src,
-    },
-    {
-        id: "e",
-        src: e.src,
-    },
+	{
+		id: 'c',
+		src: c.src,
+	},
+	{
+		id: 'u',
+		src: u.src,
+	},
+	{
+		id: 'n',
+		src: n.src,
+	},
+	{
+		id: 'c1',
+		src: c1.src,
+	},
+	{
+		id: 't',
+		src: t.src,
+	},
+	{
+		id: 'a',
+		src: a.src,
+	},
+	{
+		id: 'e',
+		src: e.src,
+	},
 ];

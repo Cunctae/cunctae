@@ -17,8 +17,7 @@ class ImageSlider {
 	private setupSlider(): void {
 		this.backgroundElement.style.backgroundSize = 'cover';
 		this.backgroundElement.style.backgroundPosition = 'center';
-		this.backgroundElement.style.opacity = '0.5';
-		this.backgroundElement.style.filter = 'sepia(0.5)';
+		this.backgroundElement.style.filter = 'sepia(0.2)';
 		this.backgroundElement.style.transition = 'background-image 1s ease-in-out';
 
 		this.backgroundElement.addEventListener('load', () => {
@@ -40,8 +39,6 @@ class ImageSlider {
 		this.backgroundElement.addEventListener('touchstart', this.handleTouchStart.bind(this));
 		this.backgroundElement.addEventListener('touchend', this.handleTouchEnd.bind(this));
 		this.backgroundElement.addEventListener('touchmove', this.handleTouchMove.bind(this));
-
-		document.addEventListener('keydown', this.handleKeyNavigation.bind(this));
 
 	}
 
@@ -67,7 +64,7 @@ class ImageSlider {
 	private startAutoplay(): void {
 		this.autoplayInterval = window.setInterval(() => {
 			this.nextImage();
-		}, 4000);
+		}, 3000);
 	}
 
 	private stopAutoplay(): void {
@@ -104,11 +101,6 @@ class ImageSlider {
 		if (Math.abs(diffX) > threshold) diffX > 0 ? this.nextImage() : this.prevImage();
 
 		this.startAutoplay();
-	}
-
-	private handleKeyNavigation(e: KeyboardEvent): void {
-		if (e.key === 'ArrowLeft') this.prevImage();
-		else if (e.key === 'ArrowRight') this.nextImage();
 	}
 }
 

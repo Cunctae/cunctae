@@ -1,0 +1,66 @@
+---
+import ImageCard from '@components/ImageCard.astro';
+import { useTranslations, type Lang } from 'src/i18n';
+const t = useTranslations(Astro.currentLocale as Lang);
+
+const cards = [
+	{
+		text: t({
+			es: 'Arquitectura',
+			en: 'Architechture',
+			'pt-br': 'Arquitetura',
+		}),
+		image: '/architecture.jpg',
+	},
+	{
+		text: t({
+			es: 'Arte',
+			en: 'Art',
+			'pt-br': 'Arte',
+		}),
+		image: '/art.jpg',
+	},
+	{
+		text: t({
+			es: 'Ciudad',
+			en: 'City',
+			'pt-br': 'Cidade',
+		}),
+		image: '/city.jpg',
+	},
+	{
+		text: t({
+			es: 'Personas',
+			en: 'People',
+			'pt-br': 'Pessoas',
+		}),
+		image: '/people.jpg',
+	},
+];
+---
+
+<section class="card-gallery">
+	<div class="card-gallery__content">
+		{cards.map((card) => <ImageCard {...card} />)}
+	</div>
+</section>
+
+<style>
+	.card-gallery {
+		margin: 20px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.card-gallery__content {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	@media (max-width: 768px) {
+		.card-gallery__content {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

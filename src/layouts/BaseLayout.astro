@@ -1,17 +1,20 @@
 ---
-import MainHead from "@components/MainHead.astro";
+import MainHead from '@components/MainHead.astro';
 
-import { SITE_TITLE, SITE_DESCRIPTION, X_ACCOUNT } from "src/consts";
-import { useTranslations, LOCALES, getLocalePaths, type Lang } from "src/i18n";
+import { SITE_TITLE, SITE_DESCRIPTION, X_ACCOUNT } from 'src/consts';
+import { useTranslations, LOCALES, getLocalePaths, type Lang } from 'src/i18n';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
+import LocaleSelect from '@components/i18n/LocaleSelect.astro';
+
+import '@styles/global.css';
+
 const t = useTranslations(Astro.currentLocale as Lang);
-import "@styles/global.css";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-
 export interface Props {
-  title?: string;
-  isLandingPage?: boolean;
-  description?: string;
+	title?: string;
+	isLandingPage?: boolean;
+	description?: string;
 }
 
 const { isLandingPage, title, description } = Astro.props;
@@ -21,63 +24,51 @@ const localeTitle = title ? `${title} - ${t(SITE_TITLE)}` : t(SITE_TITLE);
 const localeDescription = description || t(SITE_DESCRIPTION);
 ---
 
-<html
-  lang="en"
-  lang={LOCALES[locale].lang || locale}
-  dir={LOCALES[locale].dir || null}
->
-  <head>
-    <MainHead title={title} />
-    <meta charset="UTF-8" />
-    <title>{localeTitle}</title>
-    <meta name="description" content={localeDescription} />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="generator" content={Astro.generator} />
-    {
-      getLocalePaths(Astro.url).map((props) => (
-        <link
-          rel="alternate"
-          hreflang={LOCALES[props.lang].lang || props.lang}
-          href={Astro.site?.origin + props.path}
-        />
-      ))
-    }
+<html lang={LOCALES[locale].lang || locale} dir={LOCALES[locale].dir || null}>
+	<head>
+		<MainHead title={title} />
+		<meta charset="UTF-8" />
+		<title>{localeTitle}</title>
+		<meta name="description" content={localeDescription} />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<meta name="generator" content={Astro.generator} />
+		{
+			getLocalePaths(Astro.url).map((props) => (
+				<link
+					rel="alternate"
+					hreflang={LOCALES[props.lang].lang || props.lang}
+					href={Astro.site?.origin + props.path}
+				/>
+			))
+		}
 
-    <!-- icon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" sizes="192x192" href="/android-chrome.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="color-scheme" content="light dark" />
+		<!-- icon -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" sizes="192x192" href="/android-chrome.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<meta name="color-scheme" content="light dark" />
 
-    <!-- OGP -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={localeTitle} />
-    <meta property="og:site_name" content={localeTitle} />
-    <meta property="og:description" content={localeDescription} />
-    <meta property="og:image" content={Astro.site + "ogp.png"} />
-    <meta property="og:url" content={Astro.url} />
-    <meta property="og:locale" content={LOCALES[locale].lang || locale} />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content={t(X_ACCOUNT)} />
+		<!-- OGP -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={localeTitle} />
+		<meta property="og:site_name" content={localeTitle} />
+		<meta property="og:description" content={localeDescription} />
+		<meta property="og:image" content={Astro.site + 'ogp.png'} />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:locale" content={LOCALES[locale].lang || locale} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content={t(X_ACCOUNT)} />
 
-    <!-- External Resource -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<ClientRouter />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
-      rel="stylesheet"
-    />
+	</head>
+	<body>
+		{!isLandingPage && <Header />}
 
-  </head>
-  <body>
-    {!isLandingPage && <Header />}
+		<slot />
 
-    <slot />
-
-    {!isLandingPage && <Footer />}
-  </body>
+		{!isLandingPage && <Footer />}
+		<LocaleSelect />
+	</body>
 </html>
