@@ -1,13 +1,15 @@
 ---
 import { letters } from '@data/letters';
+
 interface Props {
 	alt: string;
+	isLogo?: boolean;
 }
 
-const { alt } = Astro.props;
+const { alt, isLogo } = Astro.props;
 ---
 
-<section class="letters">
+<section class={`letters ${isLogo ? 'is-logo' : ''}`}>
 	{
 		letters.map((img) => (
 			<img src={img.src} alt={`Letter ${img.id} of ${alt}`} id={img.id} draggable="false" />
@@ -24,22 +26,87 @@ const { alt } = Astro.props;
 		max-width: 300px;
 		gap: 0.5rem;
 	}
+
 	.letters img {
-		max-height: 3rem;
+		max-height: 5rem;
 	}
 
-	.letters:hover {
+	/* Default: Animations paused */
+	#u,
+	#c1,
+	#a,
+	#c,
+	#n,
+	#t,
+	#e {
+		animation-duration: 2.5s;
+		animation-iteration-count: infinite;
+		animation-play-state: paused;
+	}
+
+	/* Hover: Play animations */
+	.letters:hover #u,
+	.letters:hover #c1,
+	.letters:hover #a {
+		animation: float-down 2.5s infinite;
 		animation-play-state: running;
-		animation-composition: accumulate;
-		animation-timing-function: ease-in-out;
 	}
 
+	.letters:hover #c,
+	.letters:hover #n,
+	.letters:hover #t,
+	.letters:hover #e {
+		animation: float-up 2.5s infinite;
+		animation-play-state: running;
+	}
+
+	/* If isLogo is true, animations run infinitely */
+	.is-logo #u,
+	.is-logo #c1,
+	.is-logo #a {
+		animation: float-down 2.5s infinite;
+		animation-play-state: running;
+	}
+
+	.is-logo #c,
+	.is-logo #n,
+	.is-logo #t,
+	.is-logo #e {
+		animation: float-up 2.5s infinite;
+		animation-play-state: running;
+	}
+
+	@keyframes float-up {
+		0% {
+			transform: translateY(0rem);
+		}
+		50% {
+			transform: translateY(-0.5rem);
+		}
+		100% {
+			transform: translateY(0rem);
+		}
+	}
+
+	@keyframes float-down {
+		0% {
+			transform: translateY(0rem);
+		}
+		50% {
+			transform: translateY(0.5rem);
+		}
+		100% {
+			transform: translateY(0rem);
+		}
+	}
+
+	/* MEDIA QUERIES */
 	@media (width <= 1200px) {
 		.letters {
-			max-width: 300px;
+			max-width: 800px;
 		}
 		.letters img {
-			max-height: 3rem;
+			max-height: 5rem;
 		}
 	}
 
@@ -62,16 +129,8 @@ const { alt } = Astro.props;
 		}
 	}
 
-	@media (width <= 400px) {
-		.letters {
-			max-width: 140px;
-			gap: 0.2rem;
-		}
-		.letters img {
-			height: 1.5rem;
-		}
-	}
 
+	/* Specific letter adjustments */
 	.letters #c {
 		width: 8.125rem;
 	}
@@ -97,60 +156,6 @@ const { alt } = Astro.props;
 	@media (width <= 400px) {
 		.letters #c {
 			width: 3.2rem;
-		}
-	}
-
-	.letters:hover #u,
-	.letters:hover #c1,
-	.letters:hover #a {
-		animation: float-down 2.5s infinite;
-		animation-play-state: running;
-	}
-
-	.letters:hover #c,
-	.letters:hover #n,
-	.letters:hover #t,
-	.letters:hover #e {
-		animation: float-up 2.5s infinite;
-		animation-play-state: running;
-	}
-
-	#u,
-	#c1,
-	#a {
-		animation: float-down 2.5s infinite;
-		animation-play-state: paused;
-	}
-
-	#c,
-	#n,
-	#t,
-	#e {
-		animation: float-up 2.5s infinite;
-		animation-play-state: paused;
-	}
-
-	@keyframes float-up {
-		0% {
-			transform: translatey(0rem);
-		}
-		50% {
-			transform: translatey(-0.5rem);
-		}
-		100% {
-			transform: translatey(0rem);
-		}
-	}
-
-	@keyframes float-down {
-		0% {
-			transform: translatey(0rem);
-		}
-		50% {
-			transform: translatey(0.5rem);
-		}
-		100% {
-			transform: translatey(0rem);
 		}
 	}
 </style>

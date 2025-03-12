@@ -45,7 +45,7 @@ const t = useTranslations(Astro.currentLocale as Lang);
 						{
 							t({
 								es: 'No vendemos, creamos',
-								en: `We don't sele, we create`,
+								en: `We don't sell, we create`,
 								'pt-br': 'Não vendemos, criamos',
 							})
 						}
@@ -105,18 +105,18 @@ const t = useTranslations(Astro.currentLocale as Lang);
 	.footer__column {}
 	.footer__column-title {
 		font-size: var(--Body-16);
-		color: var(--Neutral-600);
+		color: var(--Black);
 		font-style: oblique;
 	}
 	.footer__list-item a{
 		font-size: var(--Body-16);
 		font-weight: 100;
 		text-decoration: none;
-		color: var(--Neutral-600);
+		color: var(--Black);
 	}
 
 	.footer__list-item:hover a{
-		color: var(--Neutral-50);
+		color: var(--White);
 	}
 
 	.footer__logo-wrapper {
@@ -129,23 +129,22 @@ const t = useTranslations(Astro.currentLocale as Lang);
 		margin: 0 1rem;
 		text-wrap: nowrap;
 		font-weight: bold;
-		opacity: 0.6;
+		opacity: 0.5;
 		transition-property: color;
 		transition-duration: 0.3s;
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		text-decoration: none;
-		color: var(--Neutral-600);
+		color: var(--Black);
 	}
 
 	.footer__logo:hover {
-		color: var(--Neutral-50);
+		color: var(--White);
 	}
 
 	.footer__horizontal-rule {
 		margin: 0;
 		width: 100%;
-		--tw-border-opacity: 1;
-		border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+		border-color: rgb(255 255 255 / 1, 1));
 		opacity: 0.2;
 	}
 

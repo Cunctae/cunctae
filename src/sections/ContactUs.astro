@@ -1,0 +1,84 @@
+---
+
+---
+
+<section class="contact-us">
+		<h2>Let's talk about your cunctae
+		</h2>
+
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+	<button></button>
+</section>
+
+<style>
+	.contact-us {
+		background: var(--Primary-600);
+        padding: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+		margin: 40px 20px;
+		border-radius: 0.5rem;
+	}
+
+	h2 {
+		width: 33%;
+		font-size: 40px;
+	}
+
+	p {
+		width: 33%;
+		margin: 0;
+	}
+
+	button {
+		padding: 1rem;
+		border: solid var(--Neutral-50) 0.25rem;
+		border-radius: 0.8rem;
+		font-size: 3rem;
+		color: var(--Neutral-50);
+		font-weight: bold;
+		line-height: 0;
+		width: 125px;
+		height: 125px;
+	}
+
+	button::after {
+		content: '↗';
+	}
+
+	button:hover {
+		rotate: 45deg;
+		border-radius: 50%;
+		background-color: var(--White);
+	}
+
+	button:active {
+		border-width: 0.5rem;
+		border-color: var(--Neutral-50);
+		box-shadow: 2px 2px 9px var(--Neutral-50);
+	}
+
+	@media (max-width: 768px) {
+		.contact-us {
+			flex-direction: column;
+			padding: 20px;
+			gap: 1rem;
+		}
+
+		h2, p {
+			width: auto;
+		}
+
+		button {
+			width: 100%;
+		}
+
+		button:hover {
+			width: 125px;
+			height: 125px;
+		}
+	}
+
+
+</style>

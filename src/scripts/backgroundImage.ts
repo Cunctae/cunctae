@@ -17,7 +17,8 @@ class ImageSlider {
 	private setupSlider(): void {
 		this.backgroundElement.style.backgroundSize = 'cover';
 		this.backgroundElement.style.backgroundPosition = 'center';
-		this.backgroundElement.style.filter = 'sepia(0.2)';
+		this.backgroundElement.style.filter = 'opacity(0.5) sepia(0.5)';
+
 		this.backgroundElement.style.transition = 'background-image 1s ease-in-out';
 
 		this.backgroundElement.addEventListener('load', () => {
@@ -106,12 +107,12 @@ class ImageSlider {
 
 const imageUrls: string[] = [
 	'/monk.jpg',
-	'/moon.jpg',
+	'/moon.webp',
 	'/city.jpg',
 	'/desert.jpg',
 	'/art.jpg',
-	'/people.jpg',
-	'/architecture.jpg',
+	'/people.webp',
+	'/architecture.webp',
 ];
 
 new ImageSlider(imageUrls);

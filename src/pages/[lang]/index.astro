@@ -1,8 +1,8 @@
 ---
 import BackgroundGallery from '@components/BackgroundGallery.astro';
+import Letters from '@components/Letters.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import { LOCALES } from 'src/i18n';
-import CardGallery from 'src/sections/CardGallery.astro';
 
 export const getStaticPaths = () =>
 	Object.keys(LOCALES).map((lang) => ({
@@ -10,8 +10,8 @@ export const getStaticPaths = () =>
 	}));
 ---
 
-<BaseLayout>
-	<BackgroundGallery transition:persist/>
-	<CardGallery/>
+<BaseLayout isLandingPage>
+	<BackgroundGallery transition:persist>
+		<Letters alt='Cunctae' isLogo/>
+	</BackgroundGallery>
 </BaseLayout>
-

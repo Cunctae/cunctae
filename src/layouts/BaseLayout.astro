@@ -61,7 +61,6 @@ const localeDescription = description || t(SITE_DESCRIPTION);
 		<meta name="twitter:site" content={t(X_ACCOUNT)} />
 
 		<ClientRouter />
-
 	</head>
 	<body>
 		{!isLandingPage && <Header />}
@@ -69,6 +68,6 @@ const localeDescription = description || t(SITE_DESCRIPTION);
 		<slot />
 
 		{!isLandingPage && <Footer />}
-		<LocaleSelect />
+		{!isLandingPage && <LocaleSelect />}
 	</body>
 </html>
