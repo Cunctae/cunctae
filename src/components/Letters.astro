@@ -19,12 +19,14 @@ const { alt, isLogo } = Astro.props;
 
 <style>
 	.letters {
+		z-index: 1000;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
 		max-width: 300px;
 		gap: 0.5rem;
+		filter: drop-shadow(6px 4px 4px black);
 	}
 
 	.letters img {
