@@ -1,6 +1,6 @@
 {
 	"extends": "astro/tsconfigs/strict",
-	"exclude": ["dist"],
+	"exclude": ["dist", "db"],
 	"include": [".astro/types.d.ts", "**/*"],
 	"compilerOptions": {
 		"strictPropertyInitialization": false,

@@ -1,8 +1,9 @@
+import type { APIContext } from 'astro';
 import { createClient } from '@libsql/client/web';
 
 export const prerender = false;
 
-export async function POST({ request, redirect }) {
+export async function POST({ request, redirect }: APIContext) {
 	const formData = await request.formData();
 
 	const title = formData.get('title');
@@ -24,7 +25,7 @@ export async function POST({ request, redirect }) {
 
 	await db.execute({
 		sql: `INSERT INTO CreativeWork (title, description, category, content, imageUrl, locale, publishedAt, featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-		args: [title, description, category, content, imageUrl, locale, new Date().toISOString(), featured ? 1 : 0],
+		args: [title as string, description as string, category as string, content as string ?? null, imageUrl as string ?? null, locale as string, new Date().toISOString(), featured ? 1 : 0],
 	});
 
 	return redirect('/admin?success=true', 303);
