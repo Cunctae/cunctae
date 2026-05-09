@@ -4,7 +4,7 @@ import { createClient } from '@libsql/client/web';
 export const prerender = false;
 
 export async function POST(context: APIContext) {
-	const { request, redirect, locals } = context;
+	const { request, redirect } = context;
 	const formData = await request.formData();
 
 	const title = formData.get('title');
@@ -19,10 +19,17 @@ export async function POST(context: APIContext) {
 		return new Response('Missing required fields', { status: 400 });
 	}
 
-	const runtime = (locals as any).runtime;
-	const env = runtime?.env ?? {};
-	const url = env.ASTRO_DB_REMOTE_URL || import.meta.env.ASTRO_DB_REMOTE_URL || process.env.ASTRO_DB_REMOTE_URL;
-	const token = env.ASTRO_DB_APP_TOKEN || import.meta.env.ASTRO_DB_APP_TOKEN || process.env.ASTRO_DB_APP_TOKEN;
+	let url: string;
+	let token: string;
+
+	try {
+		const { env } = await import('cloudflare:workers');
+		url = (env as any).ASTRO_DB_REMOTE_URL;
+		token = (env as any).ASTRO_DB_APP_TOKEN;
+	} catch {
+		url = process.env.ASTRO_DB_REMOTE_URL!;
+		token = process.env.ASTRO_DB_APP_TOKEN!;
+	}
 
 	const db = createClient({ url, authToken: token });
 

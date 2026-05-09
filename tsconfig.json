@@ -4,6 +4,7 @@
 	"include": [".astro/types.d.ts", "**/*"],
 	"compilerOptions": {
 		"strictPropertyInitialization": false,
+		"types": ["@cloudflare/workers-types"],
 		"baseUrl": ".",
 		"paths": {
 			"@components/*": ["src/components/*"],
