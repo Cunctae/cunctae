@@ -3,7 +3,8 @@ import { createClient } from '@libsql/client/web';
 
 export const prerender = false;
 
-export async function POST({ request, redirect }: APIContext) {
+export async function POST(context: APIContext) {
+	const { request, redirect, locals } = context;
 	const formData = await request.formData();
 
 	const title = formData.get('title');
@@ -18,8 +19,10 @@ export async function POST({ request, redirect }: APIContext) {
 		return new Response('Missing required fields', { status: 400 });
 	}
 
-	const url = process.env.ASTRO_DB_REMOTE_URL || import.meta.env.ASTRO_DB_REMOTE_URL;
-	const token = process.env.ASTRO_DB_APP_TOKEN || import.meta.env.ASTRO_DB_APP_TOKEN;
+	const runtime = (locals as any).runtime;
+	const env = runtime?.env ?? {};
+	const url = env.ASTRO_DB_REMOTE_URL || import.meta.env.ASTRO_DB_REMOTE_URL || process.env.ASTRO_DB_REMOTE_URL;
+	const token = env.ASTRO_DB_APP_TOKEN || import.meta.env.ASTRO_DB_APP_TOKEN || process.env.ASTRO_DB_APP_TOKEN;
 
 	const db = createClient({ url, authToken: token });
 
