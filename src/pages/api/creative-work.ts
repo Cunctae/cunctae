@@ -17,10 +17,10 @@ export async function POST({ request, redirect }) {
 		return new Response('Missing required fields', { status: 400 });
 	}
 
-	const db = createClient({
-		url: import.meta.env.ASTRO_DB_REMOTE_URL,
-		authToken: import.meta.env.ASTRO_DB_APP_TOKEN,
-	});
+	const url = process.env.ASTRO_DB_REMOTE_URL || import.meta.env.ASTRO_DB_REMOTE_URL;
+	const token = process.env.ASTRO_DB_APP_TOKEN || import.meta.env.ASTRO_DB_APP_TOKEN;
+
+	const db = createClient({ url, authToken: token });
 
 	await db.execute({
 		sql: `INSERT INTO CreativeWork (title, description, category, content, imageUrl, locale, publishedAt, featured) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
