@@ -2,6 +2,8 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
+import cloudflare from "@astrojs/cloudflare";
+
 const isProd = import.meta.env.PROD;
 const isDev = import.meta.env.DEV;
 const SERVER_PORT = 8888;
@@ -20,16 +22,20 @@ if (isProd) {
  * More info: https://astro.build/config
  */
 export default defineConfig({
-	site: BASE_URL,
-	server: {
+    site: BASE_URL,
+
+    server: {
 		port: SERVER_PORT,
 		host: true,
 	},
-	prefetch: {
+
+    prefetch: {
 		prefetchAll: true,
 	},
-	integrations: [mdx(), sitemap()],
-	i18n: {
+
+    integrations: [mdx(), sitemap()],
+
+    i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'es', 'pt-br'],
 		routing: {
@@ -37,9 +43,12 @@ export default defineConfig({
 			redirectToDefaultLocale: false,
 		},
 	},
-	markdown: {
+
+    markdown: {
 		shikiConfig: {
 			theme: 'red',
 		},
 	},
+
+    adapter: cloudflare()
 });
