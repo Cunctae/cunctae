@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Admin - Add Creative Work">
+	<main class="admin">
+		<h1>Add Creative Work</h1>
+
+		<form method="POST" action="/api/creative-work">
+			<label>
+				Title *
+				<input type="text" name="title" required />
+			</label>
+
+			<label>
+				Description *
+				<textarea name="description" required></textarea>
+			</label>
+
+			<label>
+				Category *
+				<select name="category" required>
+					<option value="poetry">Poetry</option>
+					<option value="sewing">Sewing</option>
+					<option value="pottery">Pottery</option>
+					<option value="art">Art</option>
+					<option value="food">Food</option>
+					<option value="other">Other</option>
+				</select>
+			</label>
+
+			<label>
+				Content
+				<textarea name="content" rows="6"></textarea>
+			</label>
+
+			<label>
+				Image URL
+				<input type="text" name="imageUrl" placeholder="/images/my-work.jpg" />
+			</label>
+
+			<label>
+				Locale
+				<select name="locale">
+					<option value="en">English</option>
+					<option value="es">Español</option>
+					<option value="pt-br">Português</option>
+				</select>
+			</label>
+
+			<label class="checkbox">
+				<input type="checkbox" name="featured" />
+				Featured
+			</label>
+
+			<button type="submit">Add Work</button>
+		</form>
+	</main>
+</BaseLayout>
+
+<style>
+	.admin {
+		max-width: 600px;
+		margin: 2rem auto;
+		padding: 1rem;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	label {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		font-weight: 600;
+	}
+	label.checkbox {
+		flex-direction: row;
+		align-items: center;
+	}
+	input, textarea, select {
+		padding: 0.5rem;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		font-size: 1rem;
+	}
+	button {
+		padding: 0.75rem;
+		background: #111;
+		color: #fff;
+		border: none;
+		border-radius: 4px;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+	button:hover {
+		background: #333;
+	}
+</style>
