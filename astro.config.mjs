@@ -1,4 +1,3 @@
-import cloudflare from '@astrojs/cloudflare';
 import db from '@astrojs/db';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
@@ -13,7 +12,6 @@ const PROD_URL = 'https://cunctae.com';
  */
 export default defineConfig({
 	site: PROD_URL,
-	adapter: cloudflare(),
 	server: {
 		port: SERVER_PORT,
 		host: true,
