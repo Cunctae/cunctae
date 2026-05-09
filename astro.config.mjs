@@ -1,4 +1,4 @@
-import db from '@astrojs/db';
+import cloudflare from '@astrojs/cloudflare';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
@@ -12,6 +12,7 @@ const PROD_URL = 'https://cunctae.com';
  */
 export default defineConfig({
 	site: PROD_URL,
+	adapter: cloudflare(),
 	server: {
 		port: SERVER_PORT,
 		host: true,
@@ -19,7 +20,7 @@ export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
 	},
-	integrations: [db(), mdx(), sitemap()],
+	integrations: [mdx(), sitemap()],
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'es', 'pt-br'],

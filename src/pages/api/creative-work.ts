@@ -1,7 +1,8 @@
 import { createClient } from '@libsql/client/web';
 
-export async function onRequestPost(context) {
-	const { request, env } = context;
+export const prerender = false;
+
+export async function POST({ request, redirect }) {
 	const formData = await request.formData();
 
 	const title = formData.get('title');
@@ -17,8 +18,8 @@ export async function onRequestPost(context) {
 	}
 
 	const db = createClient({
-		url: env.ASTRO_DB_REMOTE_URL,
-		authToken: env.ASTRO_DB_APP_TOKEN,
+		url: import.meta.env.ASTRO_DB_REMOTE_URL,
+		authToken: import.meta.env.ASTRO_DB_APP_TOKEN,
 	});
 
 	await db.execute({
@@ -26,5 +27,5 @@ export async function onRequestPost(context) {
 		args: [title, description, category, content, imageUrl, locale, new Date().toISOString(), featured ? 1 : 0],
 	});
 
-	return Response.redirect(new URL('/admin?success=true', request.url), 303);
+	return redirect('/admin?success=true', 303);
 }
