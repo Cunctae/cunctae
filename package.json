@@ -13,17 +13,20 @@
 	],
 	"scripts": {
 		"dev": "astro dev",
-		"build": "astro check && astro build",
+		"build": "astro check && astro build --remote",
 		"preview": "astro check && astro build && astro preview",
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.4",
-		"@astrojs/mdx": "^4.3.0",
-		"@astrojs/rss": "^4.0.12",
-		"@astrojs/sitemap": "^3.4.1",
-		"@astrojs/ts-plugin": "^1.10.4",
-		"astro": "^5.10.0",
+		"@astrojs/check": "^0.9.8",
+		"@astrojs/cloudflare": "^13.5.0",
+		"@astrojs/db": "^0.21.1",
+		"@astrojs/mdx": "^5.0.3",
+		"@astrojs/rss": "^4.0.18",
+		"@astrojs/sitemap": "^3.7.2",
+		"@astrojs/ts-plugin": "^1.10.7",
+		"astro": "^6.1.1",
+		"cobe": "^2.0.1",
 		"gsap": "^3.13.0",
 		"typescript": "^5.5.4"
 	},
