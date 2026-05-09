@@ -27,9 +27,14 @@ jobs:
           ASTRO_DB_REMOTE_URL: ${{ secrets.ASTRO_DB_REMOTE_URL }}
           ASTRO_DB_APP_TOKEN: ${{ secrets.ASTRO_DB_APP_TOKEN }}
 
+      - name: Prepare Pages deploy
+        run: |
+          cp -r dist/server/* dist/client/
+          mv dist/client/entry.mjs dist/client/_worker.js
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --config dist/server/wrangler.json
+          command: pages deploy dist/client --project-name=cunctae
